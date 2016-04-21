@@ -28,14 +28,16 @@ class Tendency:
     last_status = 0
 
     def add_sample(self, sample):
+        diff = 0
+        if sample > 0:
+            diff = 1
+        if sample < 0:
+            diff = -1
 
-        if sample > 0: diff = 1
-        if sample < 0: diff = -1
-
-        if self.last_status == sample:
+        if self.last_status == diff:
             return self.MINUS
 
-        self.last_status = sample
+        self.last_status = diff
         return self.last_status
 
 

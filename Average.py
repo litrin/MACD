@@ -1,5 +1,6 @@
 __all__ = [
     'Normal',
+    'NormalS',
     'MA',
     'EMA',
 ]
@@ -7,7 +8,7 @@ __all__ = [
 
 class BaseAverage:
     count = 0
-    value = 0
+    value = 0.0
 
     def add_sample(self, sample):
         self.count += 1
@@ -34,7 +35,7 @@ class BaseAverage:
     def __add__(self, other):
         return self.value + other.value
 
-    def __div__(self, other):
+    def __sub__(self, other):
         return self.value - other.value
 
 
@@ -50,10 +51,17 @@ class Normal(BaseAverage):
         return self.value
 
 
-class MA(BaseAverage):
-    value = 0
-    count = 0
+class NormalS(BaseAverage):
+    value = 0.0
 
+    def add_sample(self, sample):
+        self.value = (self.value * self.count + sample) / (self.count + 1)
+        self.count += 1
+
+        return self.value
+
+
+class MA(BaseAverage):
     def add_sample(self, sample):
         BaseAverage.add_sample(self, sample)
         self.value = (self.value + sample) / 2.0
@@ -64,9 +72,6 @@ class MA(BaseAverage):
 class EMA(BaseAverage):
     window_size = None
     alpha = 1
-
-    value = 0
-    count = 0
 
     def __init__(self, window_size):
         self.window_size = window_size

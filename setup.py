@@ -6,5 +6,5 @@ setup(
     py_modules=["Average", "MACD"],
     license='MIT',
     author='Litrin Jinag',
-    author_email='litrin@gmil.com'
+    author_email='litrin<AT>gmil.com'
 )

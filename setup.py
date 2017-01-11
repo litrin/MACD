@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='MACD',
-    version='0.9',
+    version='1.0',
     py_modules=["Average", "MACD"],
     license='MIT',
     author='Litrin Jinag',

@@ -21,6 +21,8 @@
 # SOFTWARE.
 #
 
+from abc import ABCMeta
+
 __all__ = [
     'Normal',
     'NormalS',
@@ -30,6 +32,8 @@ __all__ = [
 
 
 class BaseAverage:
+    __metaclass__ = ABCMeta
+
     count = 0
     value = 0.0
 
@@ -39,6 +43,8 @@ class BaseAverage:
             self.value = sample
 
             # raise ImportError("Method haven't implemented!")
+    def add(self,sample):
+        return self.add_sample(sample)
 
     def __eq__(self, other):
         return self.value == other.value

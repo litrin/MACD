@@ -21,6 +21,7 @@
 # SOFTWARE.
 #
 
+from abc import ABCMeta
 from Average import EMA
 
 __all__ = [
@@ -31,6 +32,8 @@ __all__ = [
 
 
 class MACDBase:
+    __metaclass__ = ABCMeta
+
     long_term = None
     short_term = None
 
@@ -42,8 +45,13 @@ class MACDBase:
         self.short_term.add_sample(sample)
         self.long_term.add_sample(sample)
 
+    def add(self, sample):
+        return self.add_sample(sample)
+
 
 class Tendency:
+    __metaclass__ = ABCMeta
+
     UP = 1
     FAIR = 0
     DOWN = -1

@@ -35,6 +35,13 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(int(normal.value), 50)
 
+    def test_alias(self):
+        normal = Average.Normal()
+        for i in SAMPLES:
+            normal.add(i)
+
+        self.assertEqual(int(normal.value), 50)
+
     def test_NormalS(self):
         normals = Average.NormalS()
         for i in SAMPLES:

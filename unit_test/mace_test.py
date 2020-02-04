@@ -33,8 +33,8 @@ class MyTestCase(unittest.TestCase):
         for i in SAMPLES:
             n = dif.add_sample(i)
 
-        self.assertEqual(int(n * 100), 799)
-        self.assertEqual(int(dif.add_sample(0)), -16)
+        self.assertEqual(int(n * 100), 998)
+        self.assertEqual(int(dif.add_sample(0)), -1)
 
     def test_DIM(self):
         dem = MACD.DEM()
